@@ -10,12 +10,20 @@ import { ApiProperty } from '@nestjs/swagger';
 export class KYCFile {
   @Prop()
   @IsNotEmpty()
+  @ApiProperty({
+    description: 'Nome do arquivo',
+    example: 'documento.jpg',
+  })
   filename: string;
 
   @Prop()
   @IsNotEmpty()
   @IsValidBase64File()
   @IsValidFileSize()
+  @ApiProperty({
+    description: 'Base64 do arquivo',
+    example: 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/4Q...',
+  })
   base64Data: string;
 }
 
