@@ -17,7 +17,7 @@ import { User } from '../users/schemas/user.schema';
 import { UsersService } from '../users/users.service';
 import { AuthService } from './auth.service';
 import { LoginPayloadDto } from './dtos/login-payload.dto';
-import { ApiCookieAuth, ApiResponse } from '@nestjs/swagger';
+import { ApiCookieAuth, ApiOperation, ApiResponse } from '@nestjs/swagger';
 
 @Controller('auth')
 export class AuthController {
@@ -28,11 +28,15 @@ export class AuthController {
   ) {}
 
   @Post('register')
+  @ApiOperation({ summary: 'Registra um novo usuário' })
   async create(@Body() body: RegisterUserDto) {
     return this.usersService.create(body);
   }
 
   @Post('login')
+  @ApiOperation({
+    summary: 'Autentica o usuário e adiciona os cookies de autenticação',
+  })
   async signIn(@Body() signInDto: LoginPayloadDto, @Response() res: IResponse) {
     const tokens = await this.authService.signIn(
       signInDto.email,
@@ -47,6 +51,7 @@ export class AuthController {
   @Post('logout')
   @UseGuards(JwtAuthGuard)
   @ApiCookieAuth()
+  @ApiOperation({ summary: 'Desloga o usuário' })
   async logout(@Request() req: IRequest, @Response() res: IResponse) {
     await this.authService.singOut((req.user as User)._id);
 
@@ -56,6 +61,9 @@ export class AuthController {
   }
 
   @Post('refresh')
+  @ApiOperation({
+    summary: 'Atualiza os tokens de autenticação',
+  })
   async refresh(
     @Response() res: IResponse,
     @Cookies('refresh_token') refreshToken: string,
@@ -73,6 +81,7 @@ export class AuthController {
     status: 200,
     type: User,
   })
+  @ApiOperation({ summary: 'Retorna os dados do usuário autenticado' })
   async me(@Request() req: IRequest) {
     return req.user;
   }
