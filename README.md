@@ -86,3 +86,8 @@ A documentação completa da API, incluindo detalhes de todos os endpoints e mod
 **3. Acessar Endpoints Protegidos:**
 
 - Para acessar os endpoints protegidos, utilize o jwt e jwt_refresh vinculados aos cookies do usuário autenticado.
+
+## Demonstração da Aplicação
+
+Acessar o link abaixo para visualizar a aplicação em funcionamento:
+`https://nest-backend-eval-production.up.railway.app/v1/api/docs`
