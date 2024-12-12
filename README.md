@@ -1,99 +1,88 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Nest Backend Eval
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Este projeto é um backend que simula algumas operações básicas bancárias desenvolvido em NestJS/TypeScript que permite:
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+- **Abertura de conta** (Cadastro de usuário)
+- **Processo KYC simulado** (upload de documento e selfie)
+- **Extrato da conta** (listar transações)
+- **Transferência** (integração com o mock backend fornecido)
 
-## Description
+## Pré-requisitos
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Certifique-se de ter instalado em sua máquina:
 
-## Project setup
+- **Node.js** (versão 18 ou superior)
+- **yarn, npm ou bun** (para instalar as dependências do projeto e rodar os scripts)
+- **Docker** e Docker Compose (para executar o mock backend)
+
+## Instalação
+
+**1. Clone o repositório**
 
 ```bash
-$ yarn install
+git clone https://github.com/DiogoJorge1401/nest-backend-eval
+cd nest-backend-eval
 ```
 
-## Compile and run the project
+**2. Instale as dependências**
 
 ```bash
-# development
-$ yarn run start
-
-# watch mode
-$ yarn run start:dev
-
-# production mode
-$ yarn run start:prod
+yarn install
 ```
 
-## Run tests
+## Como rodar a aplicação
+
+**1. Iniciar MongoDB, Redis e o mock backend**
+
+No diretório raiz deste repositório, execute:
 
 ```bash
-# unit tests
-$ yarn run test
-
-# e2e tests
-$ yarn run test:e2e
-
-# test coverage
-$ yarn run test:cov
+  docker-compose up -d
 ```
 
-## Deployment
+**2. Configurar Variáveis de Ambiente**
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+Renomeie o arquivo `.env.example` para `.env` e configure as variáveis de ambiente caso ache necessário.
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+**Observação**: Substitua os valores das chaves JWT_SECRET e JWT_REFRESH_SECRET por valores seguros.
+
+**3. Iniciar a aplicação**
 
 ```bash
-$ yarn install -g mau
-$ mau deploy
+  yarn start:dev
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+## Como rodar os testes
 
-## Resources
+Execute:
 
-Check out a few resources that may come in handy when working with NestJS:
+```bash
+  yarn test:e2e
+```
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+Para gerar o relatório de cobertura de testes, execute:
 
-## Support
+```bash
+  yarn test:cov
+```
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+## Documentação da API
 
-## Stay in touch
+A documentação completa da API, incluindo detalhes de todos os endpoints e modelos, está disponível via Swagger em:
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+`http://localhost:3001/v1/api/docs`
 
-## License
+## Instruções de Autenticação e Uso dos Endpoints
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+**1. Registrar Usuário:**
+
+- Utilize o endpoint POST /auth/register para criar uma nova conta.
+
+**2. Autenticar Usuário:**
+
+- Utilize o endpoint POST /auth/login com as credenciais cadastradas.
+- O endpointvinculará um jwt e um jwt_refresh aos cookies do usuário autenticado que será utilizado nos demais endpoints protegidos.
+
+**3. Acessar Endpoints Protegidos:**
+
+- Para acessar os endpoints protegidos, utilize o jwt e jwt_refresh vinculados aos cookies do usuário autenticado.
