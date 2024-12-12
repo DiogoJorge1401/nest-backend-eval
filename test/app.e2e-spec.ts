@@ -629,11 +629,7 @@ describe('API End-to-end Tests', () => {
           .set('Cookie', authCookies)
           .expect(200);
 
-        expect(response.body).toHaveProperty('statements');
-
-        expect(Array.isArray(response.body.statements)).toBeTruthy();
-
-        expect(response.body.statements.length).toBe(1);
+        expect(response.body.length).toBe(1);
       });
 
       it('should fail without authentication', () => {
