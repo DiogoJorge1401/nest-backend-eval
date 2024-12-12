@@ -1,14 +1,14 @@
 services:
   mongodb:
-    image: mongo:4.0
+    image: mongo:4.2
     container_name: mongodb
     ports:
       - "27017:27017"
     volumes:
-      - ./data:/data/db
+      - data:/data/db
 
   redis:
-    image: redis:5.0
+    image: redis
     container_name: redis
     ports:
       - "6379:6379"
