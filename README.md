@@ -1,6 +1,6 @@
 # Nest Backend Eval
 
-Este projeto é um backend que simula algumas operações básicas bancárias desenvolvido em NestJS/TypeScript que permite:
+Este projeto é um backend que simula algumas operações básicas bancárias desenvolvido em **NestJS/TypeScript** que permite:
 
 - **Abertura de conta** (Cadastro de usuário)
 - **Processo KYC simulado** (upload de documento e selfie)
@@ -44,7 +44,7 @@ No diretório raiz deste repositório, execute:
 
 Renomeie o arquivo `.env.example` para `.env` e configure as variáveis de ambiente caso ache necessário.
 
-**Observação**: Substitua os valores das chaves JWT_SECRET e JWT_REFRESH_SECRET por valores seguros.
+**Observação**: Substitua os valores das chaves `JWT_SECRET` e `JWT_REFRESH_SECRET` por valores seguros.
 
 **3. Iniciar a aplicação**
 
@@ -76,11 +76,11 @@ A documentação completa da API, incluindo detalhes de todos os endpoints e mod
 
 **1. Registrar Usuário:**
 
-- Utilize o endpoint POST /auth/register para criar uma nova conta.
+- Utilize o endpoint `POST /auth/register` para criar uma nova conta.
 
 **2. Autenticar Usuário:**
 
-- Utilize o endpoint POST /auth/login com as credenciais cadastradas.
+- Utilize o endpoint `POST /auth/login` com as credenciais cadastradas.
 - O endpointvinculará um jwt e um jwt_refresh aos cookies do usuário autenticado que será utilizado nos demais endpoints protegidos.
 
 **3. Acessar Endpoints Protegidos:**
